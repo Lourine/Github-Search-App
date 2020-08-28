@@ -1,0 +1,12 @@
+.navbar, .navbar-nav, .collapse {
+  /*float: left;*/
+  display: block;
+  color: paleturquoise;
+  text-align: center;
+  padding: 15px 17px;
+  font-size: 20px;
+  text-align: center;
+}
+* {box-sizing: border-box;}
+
+
