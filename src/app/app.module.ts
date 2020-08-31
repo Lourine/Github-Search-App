@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -14,6 +14,8 @@ import { RepoService } from './repo.service';
 import { from } from 'rxjs';
 import { HighlightDirective } from './highlight.directive';
 import { TimeAgoPipe } from './time-ago.pipe';
+import { FooterComponent } from './components/footer/footer.component';
+
 
 @NgModule({
   declarations: [
@@ -24,13 +26,17 @@ import { TimeAgoPipe } from './time-ago.pipe';
     SearchFormComponent,
     HighlightDirective,
     TimeAgoPipe,
+    FooterComponent,
     
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule,
+    
+    
   ],
   schemas: [ 
     CUSTOM_ELEMENTS_SCHEMA
