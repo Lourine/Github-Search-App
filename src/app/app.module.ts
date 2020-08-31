@@ -16,7 +16,7 @@ import { RepoService } from './repo.service';
 import { from } from 'rxjs';
 import { HighlightDirective } from './highlight.directive';
 import { TimeAgoPipe } from './time-ago.pipe';
-import { FooterComponent } from './components/footer/footer.component';
+
 
 
 
@@ -30,7 +30,6 @@ import { FooterComponent } from './components/footer/footer.component';
     SearchFormComponent,
     HighlightDirective,
     TimeAgoPipe,
-    FooterComponent,
     
 
     

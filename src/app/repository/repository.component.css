@@ -11,3 +11,9 @@ button{
   width: 100%;
   color: white;
 }
+.results{
+  background-image: url(../../assets/bg.jpeg);
+  background-repeat: no-repeat;
+   background-size: cover;
+  
+}
