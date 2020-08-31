@@ -1,38 +1,56 @@
 import { Component, OnInit } from '@angular/core';
-import {SearchRequestService} from '../search-request.service';
-import {Repository} from '../repository';
-
+import{ FormGroup, FormControl, Validators } from '@angular/forms';
+import { Subject, throwError } from 'rxjs'; 
+import { map, debounceTime, distinctUntilChanged, switchMap, catchError, retry, retryWhen } from 'rxjs/operators';
+import { RepoService } from '../repo.service';
+import { from } from 'rxjs';
 
 @Component({
   selector: 'app-repository',
   templateUrl: './repository.component.html',
-  providers: [SearchRequestService],
+  providers: [RepoService],
   styleUrls: ['./repository.component.css']
 })
 export class RepositoryComponent implements OnInit {
-  repository: Repository;
-    public searchRepo: string;
-    public resultCount = 12;
+  [x: string]: any;
+  
+  
+  constructor(private repoService: RepoService) { }
+  
 
-    searchRepos() {
-        this.searchRepo = '';
-        this.resultCount = 10;
-        this.getDataFunction();
+public searchTerm =  new Subject<string>();
+public searchResults: any;
+public paginationElements: any;
+public errorMessage:any;  
+public searchForm = new FormGroup({
+  search: new FormControl ( "", Validators.required),
+});
 
-    }
+public search(){
+  this.searchTerm.pipe(
+    map((e: any) => {
+      console.log(e.target.value);
+      return e.target.value
+    }),
+    debounceTime(300),
+    distinctUntilChanged(),
+    switchMap(term => {
+      return this.repoService._searchEntries (term);
+    }),
+     catchError((e) =>{
+      console.log(e);
+      this.errorMessage = e.message;
+      return throwError(e);
+     }),
 
-    constructor(public gitRepoRequest: SearchRequestService ) { }
-
+  ).subscribe(v => {
+    this.loading = false;
+    this.searchResults = v;//null 
+    this.results = this.searchResults;
+  })
+}
   ngOnInit() {
-        this.resultCount = 5;
-      this.gitRepoRequest.gitRepos(this.searchRepo);
+      this.search();
   }
-
-
-      getDataFunction() {
-          this.gitRepoRequest.gitRepos(this.searchRepo);
-
-      }
-
 
 }

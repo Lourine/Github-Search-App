@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import {  CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
+
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { UserComponent } from './user/user.component';
@@ -17,6 +19,8 @@ import { TimeAgoPipe } from './time-ago.pipe';
 import { FooterComponent } from './components/footer/footer.component';
 
 
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,6 +32,8 @@ import { FooterComponent } from './components/footer/footer.component';
     TimeAgoPipe,
     FooterComponent,
     
+
+    
   ],
   imports: [
     BrowserModule,
@@ -35,6 +41,7 @@ import { FooterComponent } from './components/footer/footer.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
+  
     
     
   ],

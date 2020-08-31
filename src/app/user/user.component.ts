@@ -35,6 +35,7 @@ export class UserComponent implements OnInit {
       this.users = this.githubUserRequest.users;
       this.userRepos.gitUserRepos(this.searchMe);
       console.log(this.userRepos);
+    
   }
 
 

@@ -1,0 +1,13 @@
+.card {
+  margin: 5%;
+}
+
+form {
+  padding-top: 5%;
+}
+button{
+  margin-top: 5%;
+  background-color: blue;
+  width: 100%;
+  color: white;
+}

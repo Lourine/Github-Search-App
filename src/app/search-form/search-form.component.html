@@ -1,4 +1,6 @@
 <div class="searchform">
+  <mat-progress-bar value="40"></mat-progress-bar>
+
   <form (ngSubmit)="searchFor(searchForm)" #searchForm="ngForm">
   <div class="form-group">
     <input type="text" class="form-control" name="find"[(ngModel)]= "searchInfo.find"  #find='ngModel'autocomplete ="off" placeholder="Search User--">

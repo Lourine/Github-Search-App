@@ -1,33 +1,34 @@
-<div class="container">
-  <div class="row ">
-  <div class="col-md-9 text-center">
-    <app-search-form (getName)='searchRepos()'></app-search-form>
-  </div>
-</div>
-<div class="row">
-  <div class="col-md-11">
-    <div >
-      <div class="table">
-        <table class="table">
-          <tbody>
-           <tr *ngFor=" let repository of gitRepoRequest.searchRepo" >
-            <td>
-              <h4>
-                <a style="text-align: center" href="{{repository.html_url}} " >{{repository.name}}</a>
-              </h4>
-              <p > Repository Owner:
-                <a href="{{repository.owner.html_url}}">{{repository.owner.login}}</a>
-              </p>
-              <p>Date Created : {{repository.created_at|date}}</p>
-              <p>Description : {{repository.description}}</p>
-            </td>
-          </tr>
-          </tbody>
-        </table>
-        <hr>
-      </div>
+<div class ="container">
+    
+    <form [formGroup]="searchForm">
+      <label>
+        <input type="text" (keyup)="searchTerm.next($event)" formControlName="search" placeholder="Search repos---" />
+        
+          <button class="search-message">Search Repositories</button>      
+        
+      </label>
+    </form>
+    <div *ngIf="searchResults">
+      <div class="results">
+        <div class="card" *ngFor="let result of results">
+            <div class="card-body" appHighlight>
+            <h2><a href="{{result.clone_url}} " target="_blank">{{result.full_name | uppercase}}</a></h2>
+            <p><strong>{{result.login}}</strong></p>
+            <p>{{result.description}}</p>
+            <p><strong>Created:</strong> {{result.created_at|date}}</p>
+            <p><strong>Language used:</strong> {{result.language}}</p>
+        
+                
+            </div>
+          </div>
+        </div>
     </div>
-  </div>
 
-</div>
-</div>
+     
+    
+    <div *ngIf="errorMessage" class="errorMessage">
+      <h2>Error</h2>
+      <p class="error">{{errorMessage}}</p>
+    </div>
+
+  </div>
