@@ -1,0 +1,12 @@
+form {
+  padding-top: 2%;
+}
+.form-control{
+  width: 50%;
+}
+button{
+  text-align: center;
+  background-color: cadetblue;
+  margin-top: 2%;
+}
+
