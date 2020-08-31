@@ -9,7 +9,7 @@
       <img src="{{users.avatar_url}}">
     </div>
     <div class="col-md-7">
-      <div class="table table-striped table-bordered">
+      <div class="table table-striped">
         <h3><strong> {{users.name}}</strong></h3>
         <table class="table table-striped table-light">
           <tbody>
@@ -52,7 +52,7 @@
           <tbody>
           <tr *ngFor='let repository of userRepos.newRepository'>
             <td>
-                <a href="{{repository.html_url}}" target="_blank" >{{repository.name}}</a>
+                <a href="{{repository.html_url}}" target="_blank" >{{repository.name|uppercase}}</a>
 
                 <br>
               <p class="desc">Description: {{repository.description}}</p>
